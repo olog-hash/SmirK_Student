@@ -1,6 +1,4 @@
-﻿using SmirK_Student.Map.Layers;
-
-namespace SmirK_Student.Algorithms.Core
+﻿namespace SmirK_Student.Map.Core.Data
 {
     public struct DriverDistance
     {

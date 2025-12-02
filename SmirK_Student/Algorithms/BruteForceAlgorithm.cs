@@ -1,24 +1,25 @@
 ﻿using SmirK_Student.Algorithms.Core;
-using SmirK_Student.Map.Layers;
+using SmirK_Student.Map.Containers;
+using SmirK_Student.Map.Core.Data;
 
 namespace SmirK_Student.Algorithms
 {
     /// <summary>
-    /// Обычный линейный поиск путем методом перебора всех доступных водителей из списка.
+    /// Обычный поиск путем грубого перебора всех доступных водителей из списка.
     /// </summary>
-    public sealed class LinearSearchAlgorithm : IDriverSearchStrategy
+    public sealed class BruteForceAlgorithm : IDriverSearchStrategy<SimpleGrid>
     {
-        public List<DriverDistance> FindNearestDrivers(DriversLayer driversLayer, int x, int y, int maxDrivers = 5)
+        public List<DriverDistance> FindNearestDrivers(SimpleGrid simpleGrid, int x, int y, int maxDrivers = 5)
         {
             // Неверные координаты или отсутствие водителей
-            if (!driversLayer.ContentGrid.IsValid(x, y) || driversLayer.DriversCount == 0)
+            if (!simpleGrid.IsValidPosition(x, y) || simpleGrid.DriversCount == 0)
             {
                 return new List<DriverDistance>();;
             }
 
             // Вычисляем расстояние от заказа до водителей
             var driversQueue = new PriorityQueue<DriverDistance, int>();
-            foreach (var driverOnMap in driversLayer.GetAllDrivers())
+            foreach (var driverOnMap in simpleGrid.GetAllDrivers())
             {
                 // Если водитель недоступен - пропускаем
                 if (!driverOnMap.Driver.IsAvaliable)

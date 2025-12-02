@@ -1,10 +1,9 @@
-﻿using SmirK_Student.Map.Layers;
+﻿using SmirK_Student.Map.Containers;
 
 namespace SmirK_Student.Map
 {
     public sealed class WorldMap
     {
-        private NavigationLayer _navigationLayer;
-        private DriversLayer _driversLayer;
+        private SimpleGrid _simpleGrid;
     }
 }
