@@ -5,9 +5,10 @@ using SmirK_Student.Map.Core.Data;
 namespace SmirK_Student.Algorithms
 {
     /// <summary>
-    /// В основе алгоритма лежит идея поиска водителей уже в заранее определенных координатах, которые являются ближайшими к точке поиска
+    /// В основе алгоритма лежит идея поиска водителей уже в заранее определенных координатах, которые являются ближайшими к точке поиска.
+    /// Обходит клетки ромбовидными слоями на основе Манхэттенского расстояния (все клетки на расстояния от точки на 1, затем 2, 3, и т.д.).
     /// </summary>
-    public sealed class DistanceSearchAlgorithm : BaseDriverSearchStrategy<ClassicGrid>
+    public sealed class ManhattanRadialSearch : BaseDriverSearchStrategy<ClassicGrid>
     {
         protected override List<DriverDistance> ExecuteAlgorithm(ClassicGrid classicGrid, int x, int y, int maxDrivers)
         {

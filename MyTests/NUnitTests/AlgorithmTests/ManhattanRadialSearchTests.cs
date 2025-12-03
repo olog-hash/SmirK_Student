@@ -6,7 +6,7 @@ namespace MyTests.NUnitTests.AlgorithmTests
 {
 
     [TestFixture]
-    public sealed class DistanceSearchAlgorithmTests : BaseAlgorithmTests<ClassicGrid>
+    public sealed class ManhattanRadialSearchTests : BaseAlgorithmTests<ClassicGrid>
     {
         protected override ClassicGrid CreateContainer(int width, int height)
         {
@@ -15,7 +15,7 @@ namespace MyTests.NUnitTests.AlgorithmTests
 
         protected override BaseDriverSearchStrategy<ClassicGrid> CreateAlgorithm()
         {
-            return new DistanceSearchAlgorithm();
+            return new ManhattanRadialSearch();
         }
     }
 }

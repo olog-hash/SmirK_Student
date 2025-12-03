@@ -4,9 +4,9 @@ using SmirK_Student.Map.Core.Data;
 
 namespace SmirK_Student.Algorithms
 {
-
     /// <summary>
     /// Алгоритм поиска ближайших водителей на сетке, что разбита на сектора (группировки).
+    /// Выполняет обход секторов квадратными слоями от точки заказа. Проверяет всех водителей послойно слоя. 
     /// </summary>
     public sealed class SectorGridAlgorithm : BaseDriverSearchStrategy<SpatialGrid>
     {

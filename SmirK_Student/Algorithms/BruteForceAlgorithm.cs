@@ -5,7 +5,7 @@ using SmirK_Student.Map.Core.Data;
 namespace SmirK_Student.Algorithms
 {
     /// <summary>
-    /// Обычный поиск путем грубого перебора всех доступных водителей из списка.
+    /// Алгоритм поиска ближайших водителей путем грубого перебора всех доступных водителей из списка.
     /// </summary>
     public sealed class BruteForceAlgorithm : BaseDriverSearchStrategy<ListGrid>
     {

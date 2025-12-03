@@ -5,7 +5,9 @@ using SmirK_Student.Map.Core.Data;
 
 namespace SmirK_Student.Algorithms
 {
-
+    /// <summary>
+    /// Алгоритм обхода графа в ширину (BFS). Начиная от точки заказа, волнообразно расширяется по соседним клеткам, используя очередь и массив посещенных клеток. 
+    /// </summary>
     public sealed class BFSAlgorithm : BaseDriverSearchStrategy<ClassicGrid>
     {
         private readonly int[] _xOffsets = new[] { -1, 0, 1, 0 };

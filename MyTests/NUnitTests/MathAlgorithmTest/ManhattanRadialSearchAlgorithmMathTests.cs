@@ -6,7 +6,7 @@ using SmirK_Student.Map.Containers;
 namespace MyTests.NUnitTests.MathAlgorithmTest
 {
     [TestFixture]
-    public class DistanceSearchAlgorithmMathTests : BaseAlgorithmMathTests<ClassicGrid>
+    public class ManhattanRadialSearchAlgorithmMathTests : BaseAlgorithmMathTests<ClassicGrid>
     {
         protected override ClassicGrid CreateContainer(int width, int height)
         {
@@ -15,7 +15,7 @@ namespace MyTests.NUnitTests.MathAlgorithmTest
 
         protected override BaseDriverSearchStrategy<ClassicGrid> CreateAlgorithm()
         {
-            return new DistanceSearchAlgorithm();
+            return new ManhattanRadialSearch();
         }
     }
 }

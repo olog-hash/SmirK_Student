@@ -42,7 +42,7 @@ namespace SmirK_Student.Algorithms.Benchmarks
         // Алгоритмы
         private BruteForceAlgorithm _bruteForceAlgorithm;
         private BFSAlgorithm _bfsAlgorithm;
-        private DistanceSearchAlgorithm _distanceSearchAlgorithm;
+        private ManhattanRadialSearch _manhattanRadialSearch;
         private SectorGridAlgorithm _sectorGridAlgorithm;
 
         // Координаты точки поиска
@@ -73,7 +73,7 @@ namespace SmirK_Student.Algorithms.Benchmarks
             // Инициализируем алгоритмы
             _bruteForceAlgorithm = new BruteForceAlgorithm();
             _bfsAlgorithm = new BFSAlgorithm();
-            _distanceSearchAlgorithm = new DistanceSearchAlgorithm();
+            _manhattanRadialSearch = new ManhattanRadialSearch();
             _sectorGridAlgorithm = new SectorGridAlgorithm();
 
             // Определяем точку заказа
@@ -195,7 +195,7 @@ namespace SmirK_Student.Algorithms.Benchmarks
         [Benchmark]
         public void DistanceSearch()
         {
-            _distanceSearchAlgorithm.FindNearestDrivers(_classicGrid, _searchX, _searchY, MaxDrivers);
+            _manhattanRadialSearch.FindNearestDrivers(_classicGrid, _searchX, _searchY, MaxDrivers);
         }
 
         [Benchmark]
