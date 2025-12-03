@@ -3,7 +3,6 @@ using SmirK_Student.Map.Core.Data;
 
 namespace SmirK_Student.Map.Containers
 {
-
     // Подсмотрел в интернете способ через IEquatable для структур
     // Можно конечно использовать кортежи... но так просто удобнее
     public struct GridCell : IEquatable<GridCell>
@@ -54,6 +53,16 @@ namespace SmirK_Student.Map.Containers
 
         public SpatialGrid(int width, int height, int cellSize) : base(width, height)
         {
+            if (cellSize <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(cellSize), "Размер сектора должнен быть больше нуля");
+            }
+            
+            if (cellSize >= int.MaxValue)
+            {
+                throw new ArgumentOutOfRangeException(nameof(cellSize), "Размер сектора превысил допустимую величину");
+            }
+            
             CellSize = cellSize;
             
             _driversOnMap = new ();

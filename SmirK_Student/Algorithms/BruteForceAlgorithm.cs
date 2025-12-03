@@ -7,19 +7,13 @@ namespace SmirK_Student.Algorithms
     /// <summary>
     /// Обычный поиск путем грубого перебора всех доступных водителей из списка.
     /// </summary>
-    public sealed class BruteForceAlgorithm : IDriverSearchStrategy<SimpleGrid>
+    public sealed class BruteForceAlgorithm : BaseDriverSearchStrategy<ListGrid>
     {
-        public List<DriverDistance> FindNearestDrivers(SimpleGrid simpleGrid, int x, int y, int maxDrivers = 5)
+        protected override List<DriverDistance> ExecuteAlgorithm(ListGrid classicGrid, int x, int y, int maxDrivers)
         {
-            // Неверные координаты или отсутствие водителей
-            if (!simpleGrid.IsValidPosition(x, y) || simpleGrid.DriversCount == 0)
-            {
-                return new List<DriverDistance>();;
-            }
-
             // Вычисляем расстояние от заказа до водителей
             var driversQueue = new PriorityQueue<DriverDistance, int>();
-            foreach (var driverOnMap in simpleGrid.GetAllDrivers())
+            foreach (var driverOnMap in classicGrid.GetAllDrivers())
             {
                 // Если водитель недоступен - пропускаем
                 if (!driverOnMap.Driver.IsAvaliable)
@@ -47,6 +41,12 @@ namespace SmirK_Student.Algorithms
 
             // Переворачиваем, чтобы получить список по возрастанию
             result.Reverse();
+            
+            // Обрезаем список до maxDrivers
+            if (result.Count > maxDrivers)
+            {
+                result.RemoveRange(maxDrivers, result.Count - maxDrivers);
+            }
             
             return result;
         }

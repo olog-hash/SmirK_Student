@@ -7,25 +7,16 @@ namespace SmirK_Student.Algorithms
     /// <summary>
     /// В основе алгоритма лежит идея поиска водителей уже в заранее определенных координатах, которые являются ближайшими к точке поиска
     /// </summary>
-    public sealed class DistanceSearchAlgorithm : IDriverSearchStrategy<SimpleGrid>
+    public sealed class DistanceSearchAlgorithm : BaseDriverSearchStrategy<ClassicGrid>
     {
-        public List<DriverDistance> FindNearestDrivers(SimpleGrid simpleGrid, int x, int y, int maxDrivers = 5)
+        protected override List<DriverDistance> ExecuteAlgorithm(ClassicGrid classicGrid, int x, int y, int maxDrivers)
         {
-            // Неверные координаты или отсутствие водителей
-            if (!simpleGrid.IsValidPosition(x, y) || simpleGrid.DriversCount == 0)
-            {
-                return new List<DriverDistance>();
-            }
-
-            int width = simpleGrid.Width;
-            int height = simpleGrid.Height;
-            
             // Находим максимально возможное расстояние в рамках сетки
             // Для этого ищем расстояние от точки до всех углов
-            int leftTopDistance = MapUtilits.CalculateDistance(0, height - 1, x, y);
-            int rightTopDistance = MapUtilits.CalculateDistance(width - 1, height - 1, x, y);
+            int leftTopDistance = MapUtilits.CalculateDistance(0, classicGrid.Height - 1, x, y);
+            int rightTopDistance = MapUtilits.CalculateDistance(classicGrid.Width - 1, classicGrid.Height - 1, x, y);
             int leftBottomDistance = MapUtilits.CalculateDistance(0, 0, x, y);
-            int rightBottomDistance = MapUtilits.CalculateDistance(width - 1, 0, x, y);
+            int rightBottomDistance = MapUtilits.CalculateDistance(classicGrid.Width - 1, 0, x, y);
 
             int maxDistance = Math.Max(
                 Math.Max(leftBottomDistance, rightBottomDistance),
@@ -35,7 +26,7 @@ namespace SmirK_Student.Algorithms
             for (int distance = 0; distance <= maxDistance && foundDrivers.Count < maxDrivers; distance++)
             {
                 // Список всех водителей, что получилось найти на этой дистанции
-                GetDriversOnDistance(foundDrivers, simpleGrid, x, y, distance);
+                GetDriversOnDistance(foundDrivers, classicGrid, x, y, distance);
             }
             
             // Сортировку проводить не требуется, все равно искали по возрастанию от точки заказа
@@ -48,16 +39,16 @@ namespace SmirK_Student.Algorithms
             return foundDrivers;
         }
 
-        private void GetDriversOnDistance(List<DriverDistance> driverOnMaps, SimpleGrid simpleGrid, int centerX, int centerY,
+        private void GetDriversOnDistance(List<DriverDistance> driverOnMaps, ClassicGrid classicGrid, int centerX, int centerY,
             int distance)
         {
-            int width = simpleGrid.Width;
-            int height = simpleGrid.Height;
+            int width = classicGrid.Width;
+            int height = classicGrid.Height;
 
             // Если точка центральная, просто возвращаем её
             if (distance == 0)
             {
-                ProcessPoint(driverOnMaps, simpleGrid, centerX, centerY, 0);
+                ProcessPoint(driverOnMaps, classicGrid, centerX, centerY, 0);
                 return;
             }
 
@@ -91,7 +82,7 @@ namespace SmirK_Student.Algorithms
                     int x = centerX - distance + i;
                     int y = centerY + i;
 
-                    ProcessPoint(driverOnMaps, simpleGrid, x, y, distance);
+                    ProcessPoint(driverOnMaps, classicGrid, x, y, distance);
                 }
             }
 
@@ -114,7 +105,7 @@ namespace SmirK_Student.Algorithms
                     int x = centerX + i;
                     int y = centerY + distance - i;
 
-                    ProcessPoint(driverOnMaps, simpleGrid, x, y, distance);
+                    ProcessPoint(driverOnMaps, classicGrid, x, y, distance);
                 }
             }
 
@@ -137,7 +128,7 @@ namespace SmirK_Student.Algorithms
                     int x = centerX + distance - i;
                     int y = centerY - i;
 
-                    ProcessPoint(driverOnMaps, simpleGrid, x, y, distance);
+                    ProcessPoint(driverOnMaps, classicGrid, x, y, distance);
                 }
             }
             
@@ -160,14 +151,14 @@ namespace SmirK_Student.Algorithms
                     int x = centerX - i;
                     int y = centerY - distance + i;
 
-                    ProcessPoint(driverOnMaps, simpleGrid, x, y, distance);
+                    ProcessPoint(driverOnMaps, classicGrid, x, y, distance);
                 }
             }
         }
 
-        private void ProcessPoint(List<DriverDistance> result, SimpleGrid simpleGrid, int x, int y, int distance)
+        private void ProcessPoint(List<DriverDistance> result, ClassicGrid classicGrid, int x, int y, int distance)
         {
-            var driver = simpleGrid.ContentGrid[x, y];
+            var driver = classicGrid.ContentGrid[x, y];
             if (driver != null && driver.IsAvaliable)
             {
                 result.Add(new DriverDistance(new DriverOnMap(driver, x, y), distance));

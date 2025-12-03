@@ -7,22 +7,16 @@ namespace SmirK_Student.Algorithms
     /// <summary>
     /// Основная идея алгоритма - проходить клетки карты кольцами вокруг точки заказа.
     /// </summary>
-    public sealed class CircleSearchAlgorithm : IDriverSearchStrategy<SimpleGrid>
+    public sealed class CircleSearchAlgorithm : BaseDriverSearchStrategy<ClassicGrid>
     {
-        public List<DriverDistance> FindNearestDrivers(SimpleGrid simpleGrid, int x, int y, int maxDrivers = 5)
+        protected override List<DriverDistance> ExecuteAlgorithm(ClassicGrid classicGrid, int x, int y, int maxDrivers)
         {
-            // Неверные координаты или отсутствие водителей
-            if (!simpleGrid.IsValidPosition(x, y) || simpleGrid.DriversCount == 0)
-            {
-                return new List<DriverDistance>();
-            }
-
             // Находим максимальное расстояние от точки заказа до любого угла карты
             // Это будет максимальным радиусом окружности, который нужно будет проверять.
             int leftDistance = x;
-            int rightDistance = simpleGrid.Width - 1 - x;
+            int rightDistance = classicGrid.Width - 1 - x;
             int topDistance = y;
-            int bottomDistance = simpleGrid.Height - 1 - y;
+            int bottomDistance = classicGrid.Height - 1 - y;
             
             int maxRadius = Math.Max(Math.Max(leftDistance, rightDistance), Math.Max(topDistance, bottomDistance));
             
@@ -30,7 +24,7 @@ namespace SmirK_Student.Algorithms
             var foundDrivers = new List<DriverOnMap>();
             for (int radius = 0; radius <= maxRadius && foundDrivers.Count < maxDrivers; radius++)
             {
-                CheckCircle(foundDrivers, simpleGrid, x, y, radius);
+                CheckCircle(foundDrivers, classicGrid, x, y, radius);
             }
             
             // Если никого не нашли 
@@ -39,14 +33,17 @@ namespace SmirK_Student.Algorithms
                 return new List<DriverDistance>();
             }
             
-            // Вычисляем расстояние от заказа до водителей
+            // Используем приоритетную очередь для автоматической сортировки
+            // Инвертируем приоритет (-distance), чтобы удалять самых дальних
             var driversQueue = new PriorityQueue<DriverDistance, int>();
+            
+            // Перебираем найденных водителей
             foreach (var driverOnMap in foundDrivers)
             {
                 // Используем манхэттенское расстояние
                 int distance = Math.Abs(driverOnMap.X - x) + Math.Abs(driverOnMap.Y - y);
 
-                // Приоритетная очередь сама проводит сортировку, но чтобы удалять самые дальные (с конца) - инвертируем дистанцию.
+                // Добавляем в приоритетную очередь с инвертированным приоритетом
                 driversQueue.Enqueue(new DriverDistance(driverOnMap, distance), -distance);
 
                 // Если водителей больше - удаляем самого дальнего
@@ -75,15 +72,15 @@ namespace SmirK_Student.Algorithms
             return result;
         }
 
-        private void CheckCircle(List<DriverOnMap> result, SimpleGrid simpleGrid, int centerX, int centerY, int radius)
+        private void CheckCircle(List<DriverOnMap> result, ClassicGrid classicGrid, int centerX, int centerY, int radius)
         {
-            int width = simpleGrid.Width;
-            int height = simpleGrid.Height;
+            int width = classicGrid.Width;
+            int height = classicGrid.Height;
             
             // Проверяем центральную клетку
             if (radius == 0)
             {
-                ProcessPoint(result, simpleGrid, centerX, centerY);
+                ProcessPoint(result, classicGrid, centerX, centerY);
             }
 
             // Вычисляем границы слоя с учетом поля
@@ -98,7 +95,7 @@ namespace SmirK_Student.Algorithms
             {
                 for (int x = minX + 1; x < maxX; x++)
                 {
-                    ProcessPoint(result, simpleGrid, x, topY);
+                    ProcessPoint(result, classicGrid, x, topY);
                 }
             }
             
@@ -108,7 +105,7 @@ namespace SmirK_Student.Algorithms
             {
                 for (int x = minX + 1; x < maxX; x++)
                 {
-                    ProcessPoint(result, simpleGrid, x, bottomY);
+                    ProcessPoint(result, classicGrid, x, bottomY);
                 }
             }
             
@@ -118,7 +115,7 @@ namespace SmirK_Student.Algorithms
             {
                 for (int y = minY + 1; y < maxY; y++)
                 {
-                    ProcessPoint(result, simpleGrid, leftX, y);
+                    ProcessPoint(result, classicGrid, leftX, y);
                 }
             }
             
@@ -128,28 +125,28 @@ namespace SmirK_Student.Algorithms
             {
                 for (int y = minY + 1; y < maxY; y++)
                 {
-                    ProcessPoint(result, simpleGrid, rightX, y);
+                    ProcessPoint(result, classicGrid, rightX, y);
                 }
             }
             
             // Обрабатываем 4 угла отдельно
-            TryProcessPoint(result, simpleGrid, width, height, centerX - radius, centerY - radius);
-            TryProcessPoint(result, simpleGrid, width, height, centerX - radius, centerY + radius);
-            TryProcessPoint(result, simpleGrid, width, height, centerX + radius, centerY - radius);
-            TryProcessPoint(result, simpleGrid, width, height, centerX + radius, centerY + radius);
+            TryProcessPoint(result, classicGrid, width, height, centerX - radius, centerY - radius);
+            TryProcessPoint(result, classicGrid, width, height, centerX - radius, centerY + radius);
+            TryProcessPoint(result, classicGrid, width, height, centerX + radius, centerY - radius);
+            TryProcessPoint(result, classicGrid, width, height, centerX + radius, centerY + radius);
         }
 
-        private void TryProcessPoint(List<DriverOnMap> result, SimpleGrid simpleGrid, int width, int height, int x, int y)
+        private void TryProcessPoint(List<DriverOnMap> result, ClassicGrid classicGrid, int width, int height, int x, int y)
         {
             if (MapUtilits.IsInBounds(width, height, x, y))
             {
-                ProcessPoint(result, simpleGrid, x, y);
+                ProcessPoint(result, classicGrid, x, y);
             }
         }
         
-        private void ProcessPoint(List<DriverOnMap> result, SimpleGrid simpleGrid, int x, int y)
+        private void ProcessPoint(List<DriverOnMap> result, ClassicGrid classicGrid, int x, int y)
         {
-            var driver = simpleGrid.ContentGrid[x, y];
+            var driver = classicGrid.ContentGrid[x, y];
             if (driver != null && driver.IsAvaliable)
             {
                 result.Add(new DriverOnMap(driver, x, y));

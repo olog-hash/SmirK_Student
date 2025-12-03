@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmirK_Student", "SmirK_Student\SmirK_Student.csproj", "{1589E737-CEAC-4302-8E87-1D95E12F51FF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyTests", "MyTests\MyTests.csproj", "{3B40825B-B153-44F8-A2DB-9FEEDA036264}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmirK_Student.Benchmarks", "SmirK_Student.Benchmarks\SmirK_Student.Benchmarks.csproj", "{CFD41C3B-56D7-475B-856A-C9D31BE225DA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +16,13 @@ Global
 		{1589E737-CEAC-4302-8E87-1D95E12F51FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1589E737-CEAC-4302-8E87-1D95E12F51FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1589E737-CEAC-4302-8E87-1D95E12F51FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B40825B-B153-44F8-A2DB-9FEEDA036264}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B40825B-B153-44F8-A2DB-9FEEDA036264}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B40825B-B153-44F8-A2DB-9FEEDA036264}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B40825B-B153-44F8-A2DB-9FEEDA036264}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFD41C3B-56D7-475B-856A-C9D31BE225DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFD41C3B-56D7-475B-856A-C9D31BE225DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFD41C3B-56D7-475B-856A-C9D31BE225DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFD41C3B-56D7-475B-856A-C9D31BE225DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

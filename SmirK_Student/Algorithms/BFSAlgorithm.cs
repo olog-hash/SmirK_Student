@@ -6,21 +6,15 @@ using SmirK_Student.Map.Core.Data;
 namespace SmirK_Student.Algorithms
 {
 
-    public sealed class BFSAlgorithm : IDriverSearchStrategy<SimpleGrid>
+    public sealed class BFSAlgorithm : BaseDriverSearchStrategy<ClassicGrid>
     {
         private readonly int[] _xOffsets = new[] { -1, 0, 1, 0 };
         private readonly int[] _yOffsets = new[] { 0, 1, 0, -1 };
-
-        public List<DriverDistance> FindNearestDrivers(SimpleGrid simpleGrid, int x, int y, int maxDrivers = 5)
+        
+        protected override List<DriverDistance> ExecuteAlgorithm(ClassicGrid classicGrid, int x, int y, int maxDrivers)
         {
-            // Неверные координаты или отсутствие водителей
-            if (!simpleGrid.IsValidPosition(x, y) || simpleGrid.DriversCount == 0)
-            {
-                return new List<DriverDistance>();
-            }
-
-            int width = simpleGrid.Width;
-            int height = simpleGrid.Height;
+            int width = classicGrid.Width;
+            int height = classicGrid.Height;
 
             var foundDrivers = new List<DriverDistance>();
 
@@ -40,7 +34,7 @@ namespace SmirK_Student.Algorithms
                 var (centerX, centerY, distance) = queue.Dequeue();
 
                 // Проверяем текущую точку на наличие водителя
-                var driver = simpleGrid.ContentGrid[centerX, centerY];
+                var driver = classicGrid.ContentGrid[centerX, centerY];
                 if (driver != null && driver.IsAvaliable)
                 {
                     foundDrivers.Add(new DriverDistance(new DriverOnMap(driver, centerX, centerY), distance));

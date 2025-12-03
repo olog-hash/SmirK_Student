@@ -15,6 +15,28 @@ namespace SmirK_Student.Map.Core
 
         public DriversContainer(int width, int height)
         {
+            // Проверка на минимальное значение карты
+            if (width <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(width), "Ширина должна быть больше нуля!");
+            }
+            
+            if (height <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(height), "Высота должна быть больше нуля!");
+            }
+            
+            // Проверка на максимальное значение карты
+            if (width >= int.MaxValue)
+            {
+                throw new ArgumentOutOfRangeException(nameof(width), $"Ширина превышает допустимый лимит {int.MaxValue}!");
+            }
+            
+            if (height >= int.MaxValue)
+            {
+                throw new ArgumentOutOfRangeException(nameof(height), $"Высота превышает допустимый лимит {int.MaxValue}!");
+            }
+            
             Width = width;
             Height = height;
         }
