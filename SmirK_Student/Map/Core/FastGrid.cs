@@ -4,15 +4,15 @@
     /// Удобный фасад для работы с сеткой.
     /// Под капотом находиться одномерный массив, для лучшей производительности.
     /// </summary>
-    public class Grid<T>
+    public class FastGrid<T>
     {
         public int TotalCells => Width * Height;
-        public int Width { get; }
-        public int Height { get; }
-
+        
+        public readonly int Width;
+        public readonly int Height;
         private readonly T[] _cells;
 
-        public Grid(int width, int height)
+        public FastGrid(int width, int height)
         {
             Width = width;
             Height = height;

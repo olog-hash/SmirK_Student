@@ -1,24 +1,19 @@
 ﻿using SmirK_Student.Algorithms.Core;
-using SmirK_Student.Map.Layers;
+using SmirK_Student.Map.Containers;
+using SmirK_Student.Map.Core.Data;
 
 namespace SmirK_Student.Algorithms
 {
     /// <summary>
-    /// Обычный линейный поиск путем методом перебора всех доступных водителей из списка.
+    /// Алгоритм поиска ближайших водителей путем грубого перебора всех доступных водителей из списка.
     /// </summary>
-    public sealed class LinearSearchAlgorithm : IDriverSearchStrategy
+    public sealed class BruteForceAlgorithm : BaseDriverSearchStrategy<ListGrid>
     {
-        public List<DriverDistance> FindNearestDrivers(DriversLayer driversLayer, int x, int y, int maxDrivers = 5)
+        protected override List<DriverDistance> ExecuteAlgorithm(ListGrid classicGrid, int x, int y, int maxDrivers)
         {
-            // Неверные координаты или отсутствие водителей
-            if (!driversLayer.ContentGrid.IsValid(x, y) || driversLayer.DriversCount == 0)
-            {
-                return new List<DriverDistance>();;
-            }
-
             // Вычисляем расстояние от заказа до водителей
             var driversQueue = new PriorityQueue<DriverDistance, int>();
-            foreach (var driverOnMap in driversLayer.GetAllDrivers())
+            foreach (var driverOnMap in classicGrid.GetAllDrivers())
             {
                 // Если водитель недоступен - пропускаем
                 if (!driverOnMap.Driver.IsAvaliable)
@@ -46,6 +41,12 @@ namespace SmirK_Student.Algorithms
 
             // Переворачиваем, чтобы получить список по возрастанию
             result.Reverse();
+            
+            // Обрезаем список до maxDrivers
+            if (result.Count > maxDrivers)
+            {
+                result.RemoveRange(maxDrivers, result.Count - maxDrivers);
+            }
             
             return result;
         }

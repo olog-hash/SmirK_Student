@@ -1,0 +1,919 @@
+// Validating benchmarks:
+// ***** BenchmarkRunner: Start   *****
+// ***** Found 256 benchmark(s) in total *****
+// ***** Building 1 exe(s) in Sequential: Start   *****
+// start dotnet  restore --nodeReuse:false /p:UseSharedCompilation=false /p:Deterministic=true /p:Optimize=true /p:ArtifactsPath="E:\Projects\Sharp\SmirK_Student\SmirK_Student.Benchmarks\bin\Release\net6.0\SmirK_Student.Benchmarks-1/" /p:OutDir="E:\Projects\Sharp\SmirK_Student\SmirK_Student.Benchmarks\bin\Release\net6.0\SmirK_Student.Benchmarks-1\bin\Release\net6.0/" /p:OutputPath="E:\Projects\Sharp\SmirK_Student\SmirK_Student.Benchmarks\bin\Release\net6.0\SmirK_Student.Benchmarks-1\bin\Release\net6.0/" /p:PublishDir="E:\Projects\Sharp\SmirK_Student\SmirK_Student.Benchmarks\bin\Release\net6.0\SmirK_Student.Benchmarks-1\publish/" in E:\Projects\Sharp\SmirK_Student\SmirK_Student.Benchmarks\bin\Release\net6.0\SmirK_Student.Benchmarks-1
+// command took 0.69 sec and exited with 0
+// start dotnet  build -c Release --no-restore --nodeReuse:false /p:UseSharedCompilation=false /p:Deterministic=true /p:Optimize=true /p:ArtifactsPath="E:\Projects\Sharp\SmirK_Student\SmirK_Student.Benchmarks\bin\Release\net6.0\SmirK_Student.Benchmarks-1/" /p:OutDir="E:\Projects\Sharp\SmirK_Student\SmirK_Student.Benchmarks\bin\Release\net6.0\SmirK_Student.Benchmarks-1\bin\Release\net6.0/" /p:OutputPath="E:\Projects\Sharp\SmirK_Student\SmirK_Student.Benchmarks\bin\Release\net6.0\SmirK_Student.Benchmarks-1\bin\Release\net6.0/" /p:PublishDir="E:\Projects\Sharp\SmirK_Student\SmirK_Student.Benchmarks\bin\Release\net6.0\SmirK_Student.Benchmarks-1\publish/" --output "E:\Projects\Sharp\SmirK_Student\SmirK_Student.Benchmarks\bin\Release\net6.0\SmirK_Student.Benchmarks-1\bin\Release\net6.0/" in E:\Projects\Sharp\SmirK_Student\SmirK_Student.Benchmarks\bin\Release\net6.0\SmirK_Student.Benchmarks-1
+// command took 4.1 sec and exited with 0
+// ***** Done, took 00:00:05 (5.38 sec)   *****
+// Found 256 benchmarks:
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=100, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=100, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=100, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=100, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=100, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=100, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=100, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=100, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=100, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=100, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=100, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=100, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=100, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=100, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=100, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=100, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=100, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=100, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=100, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=100, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=100, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=100, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=100, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=100, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=100, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=100, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=100, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=100, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=100, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=100, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=100, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=100, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=100, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=100, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=100, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=100, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=100, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=100, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=100, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=100, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=100, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=100, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=100, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=100, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=100, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=100, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=100, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=100, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=100, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=100, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=100, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=100, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=100, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=100, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=100, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=100, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=100, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=100, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=100, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=100, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=100, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=100, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=100, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=100, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=1000, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=1000, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=1000, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=1000, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=1000, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=1000, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=1000, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=1000, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=1000, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=1000, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=1000, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=1000, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=1000, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=1000, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=1000, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=1000, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=1000, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=1000, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=1000, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=1000, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=1000, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=1000, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=1000, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=1000, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=1000, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=1000, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=1000, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=1000, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=1000, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=1000, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=1000, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=1000, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=1000, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=1000, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=1000, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=1000, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=1000, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=1000, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=1000, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=1000, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=1000, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=1000, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=1000, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=1000, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=1000, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=1000, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=1000, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=1000, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=1000, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=1000, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=1000, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=1000, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=1000, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=1000, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=1000, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=1000, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=1000, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=1000, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=1000, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=1000, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=1000, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=1000, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=1000, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=1000, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=10000, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=10000, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=10000, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=10000, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=10000, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=10000, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=10000, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=10000, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=10000, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=10000, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=10000, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=10000, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=10000, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=10000, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=10000, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=10000, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=10000, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=10000, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=10000, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=10000, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=10000, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=10000, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=10000, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=10000, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=10000, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=10000, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=10000, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=10000, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=10000, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=10000, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=10000, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=10000, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=10000, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=10000, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=10000, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=10000, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=10000, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=10000, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=10000, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=10000, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=10000, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=10000, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=10000, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=10000, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=10000, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=10000, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=10000, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=10000, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=10000, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=10000, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=10000, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=10000, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=10000, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=10000, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=10000, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=10000, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=10000, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=10000, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=10000, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=10000, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=10000, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=10000, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=10000, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=10000, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=50000, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=50000, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=50000, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=50000, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=50000, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=50000, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=50000, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=50000, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=50000, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=50000, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=50000, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=50000, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=50000, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=50000, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=50000, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=50000, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=50000, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=50000, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=50000, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=50000, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=50000, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=50000, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=50000, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=50000, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=50000, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=50000, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=50000, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=50000, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=50000, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=50000, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=50000, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=50000, DriverDensity=0,01, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=50000, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=50000, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=50000, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=50000, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=50000, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=50000, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=50000, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=50000, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=50000, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=50000, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=50000, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=50000, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=50000, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=50000, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=50000, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=50000, DriverDensity=0,1, DriverPlacement=Random, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=50000, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=50000, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=50000, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=50000, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Center]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=50000, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=50000, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=50000, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=50000, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=10, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=50000, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=50000, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=50000, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=50000, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Center]
+//   DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=50000, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.BFS: DefaultJob [MapSize=50000, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=50000, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Corner]
+//   DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=50000, DriverDensity=0,1, DriverPlacement=WorstCase, MaxDrivers=100, SearchPosition=Corner]
+
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: Высокая производительность)
+// **************************
+// Benchmark: DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=100, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Center]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet SmirK_Student.Benchmarks-1.dll --anonymousPipes 2460 2456 --benchmarkName "SmirK_Student.Algorithms.Benchmarks.DriverSearchBenchmarks.BruteForce(MapSize: 100, DriverDensity: 0,01, DriverPlacement: Random, MaxDrivers: 10, SearchPosition: Center)" --job Default --benchmarkId 0 in E:\Projects\Sharp\SmirK_Student\SmirK_Student.Benchmarks\bin\Release\net6.0\SmirK_Student.Benchmarks-1\bin\Release\net6.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 6.0.36 (6.0.36, 6.0.3624.51421), X64 RyuJIT x86-64-v3
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2+BMI1+BMI2+F16C+FMA+LZCNT+MOVBE,AVX,SSE3+SSSE3+SSE4.1+SSE4.2+POPCNT,X86Base+SSE+SSE2,AES+PCLMUL VectorSize=256
+// Job: DefaultJob
+
+OverheadJitting  1: 1 op, 90800.00 ns, 90.8000 us/op
+WorkloadJitting  1: 1 op, 3067200.00 ns, 3.0672 ms/op
+
+OverheadJitting  2: 16 op, 135700.00 ns, 8.4813 us/op
+WorkloadJitting  2: 16 op, 232800.00 ns, 14.5500 us/op
+
+WorkloadPilot    1: 16 op, 75200.00 ns, 4.7000 us/op
+WorkloadPilot    2: 32 op, 146800.00 ns, 4.5875 us/op
+WorkloadPilot    3: 64 op, 265500.00 ns, 4.1484 us/op
+WorkloadPilot    4: 128 op, 548000.00 ns, 4.2813 us/op
+WorkloadPilot    5: 256 op, 1073700.00 ns, 4.1941 us/op
+WorkloadPilot    6: 512 op, 2192000.00 ns, 4.2813 us/op
+WorkloadPilot    7: 1024 op, 4374700.00 ns, 4.2722 us/op
+WorkloadPilot    8: 2048 op, 8784000.00 ns, 4.2891 us/op
+WorkloadPilot    9: 4096 op, 17401000.00 ns, 4.2483 us/op
+WorkloadPilot   10: 8192 op, 34963400.00 ns, 4.2680 us/op
+WorkloadPilot   11: 16384 op, 69331100.00 ns, 4.2316 us/op
+WorkloadPilot   12: 32768 op, 129604300.00 ns, 3.9552 us/op
+WorkloadPilot   13: 65536 op, 248898200.00 ns, 3.7979 us/op
+WorkloadPilot   14: 131072 op, 497515000.00 ns, 3.7957 us/op
+WorkloadPilot   15: 262144 op, 996024500.00 ns, 3.7995 us/op
+
+OverheadWarmup   1: 262144 op, 474700.00 ns, 1.8108 ns/op
+OverheadWarmup   2: 262144 op, 478500.00 ns, 1.8253 ns/op
+OverheadWarmup   3: 262144 op, 481300.00 ns, 1.8360 ns/op
+OverheadWarmup   4: 262144 op, 489200.00 ns, 1.8661 ns/op
+OverheadWarmup   5: 262144 op, 479300.00 ns, 1.8284 ns/op
+OverheadWarmup   6: 262144 op, 510700.00 ns, 1.9482 ns/op
+OverheadWarmup   7: 262144 op, 463100.00 ns, 1.7666 ns/op
+
+OverheadActual   1: 262144 op, 512100.00 ns, 1.9535 ns/op
+OverheadActual   2: 262144 op, 488800.00 ns, 1.8646 ns/op
+OverheadActual   3: 262144 op, 466500.00 ns, 1.7796 ns/op
+OverheadActual   4: 262144 op, 485500.00 ns, 1.8520 ns/op
+OverheadActual   5: 262144 op, 503200.00 ns, 1.9196 ns/op
+OverheadActual   6: 262144 op, 478600.00 ns, 1.8257 ns/op
+OverheadActual   7: 262144 op, 454900.00 ns, 1.7353 ns/op
+OverheadActual   8: 262144 op, 476400.00 ns, 1.8173 ns/op
+OverheadActual   9: 262144 op, 499400.00 ns, 1.9051 ns/op
+OverheadActual  10: 262144 op, 485200.00 ns, 1.8509 ns/op
+OverheadActual  11: 262144 op, 480200.00 ns, 1.8318 ns/op
+OverheadActual  12: 262144 op, 492000.00 ns, 1.8768 ns/op
+OverheadActual  13: 262144 op, 483100.00 ns, 1.8429 ns/op
+OverheadActual  14: 262144 op, 486600.00 ns, 1.8562 ns/op
+OverheadActual  15: 262144 op, 469500.00 ns, 1.7910 ns/op
+
+WorkloadWarmup   1: 262144 op, 1009127500.00 ns, 3.8495 us/op
+WorkloadWarmup   2: 262144 op, 1004147500.00 ns, 3.8305 us/op
+WorkloadWarmup   3: 262144 op, 997690400.00 ns, 3.8059 us/op
+WorkloadWarmup   4: 262144 op, 1011897700.00 ns, 3.8601 us/op
+WorkloadWarmup   5: 262144 op, 1001463500.00 ns, 3.8203 us/op
+WorkloadWarmup   6: 262144 op, 1010558300.00 ns, 3.8550 us/op
+WorkloadWarmup   7: 262144 op, 1000250800.00 ns, 3.8157 us/op
+
+// BeforeActualRun
+WorkloadActual   1: 262144 op, 997897900.00 ns, 3.8067 us/op
+WorkloadActual   2: 262144 op, 995311400.00 ns, 3.7968 us/op
+WorkloadActual   3: 262144 op, 1012343800.00 ns, 3.8618 us/op
+WorkloadActual   4: 262144 op, 998917600.00 ns, 3.8106 us/op
+WorkloadActual   5: 262144 op, 995802100.00 ns, 3.7987 us/op
+WorkloadActual   6: 262144 op, 1003490400.00 ns, 3.8280 us/op
+WorkloadActual   7: 262144 op, 1027003000.00 ns, 3.9177 us/op
+WorkloadActual   8: 262144 op, 1035731300.00 ns, 3.9510 us/op
+WorkloadActual   9: 262144 op, 1004818500.00 ns, 3.8331 us/op
+WorkloadActual  10: 262144 op, 1008966100.00 ns, 3.8489 us/op
+WorkloadActual  11: 262144 op, 1005548500.00 ns, 3.8359 us/op
+WorkloadActual  12: 262144 op, 1025040700.00 ns, 3.9102 us/op
+WorkloadActual  13: 262144 op, 992005600.00 ns, 3.7842 us/op
+WorkloadActual  14: 262144 op, 999772600.00 ns, 3.8138 us/op
+WorkloadActual  15: 262144 op, 994018100.00 ns, 3.7919 us/op
+
+// AfterActualRun
+WorkloadResult   1: 262144 op, 997412700.00 ns, 3.8048 us/op
+WorkloadResult   2: 262144 op, 994826200.00 ns, 3.7950 us/op
+WorkloadResult   3: 262144 op, 1011858600.00 ns, 3.8599 us/op
+WorkloadResult   4: 262144 op, 998432400.00 ns, 3.8087 us/op
+WorkloadResult   5: 262144 op, 995316900.00 ns, 3.7968 us/op
+WorkloadResult   6: 262144 op, 1003005200.00 ns, 3.8262 us/op
+WorkloadResult   7: 262144 op, 1026517800.00 ns, 3.9159 us/op
+WorkloadResult   8: 262144 op, 1004333300.00 ns, 3.8312 us/op
+WorkloadResult   9: 262144 op, 1008480900.00 ns, 3.8470 us/op
+WorkloadResult  10: 262144 op, 1005063300.00 ns, 3.8340 us/op
+WorkloadResult  11: 262144 op, 1024555500.00 ns, 3.9084 us/op
+WorkloadResult  12: 262144 op, 991520400.00 ns, 3.7824 us/op
+WorkloadResult  13: 262144 op, 999287400.00 ns, 3.8120 us/op
+WorkloadResult  14: 262144 op, 993532900.00 ns, 3.7900 us/op
+// GC:  29 0 0 274726912 262144
+// Threading:  0 0 262144
+
+// AfterAll
+// Benchmark Process 25284 has exited with code 0.
+
+Mean = 3.829 μs, StdErr = 0.011 μs (0.29%), N = 14, StdDev = 0.041 μs
+Min = 3.782 μs, Q1 = 3.799 μs, Median = 3.819 μs, Q3 = 3.844 μs, Max = 3.916 μs
+IQR = 0.045 μs, LowerFence = 3.731 μs, UpperFence = 3.911 μs
+ConfidenceInterval = [3.783 μs; 3.876 μs] (CI 99.9%), Margin = 0.047 μs (1.22% of Mean)
+Skewness = 0.9, Kurtosis = 2.57, MValue = 2
+
+// ** Remained 255 (99,6 %) benchmark(s) to run. Estimated finish 2025-12-03 23:16 (1h 51m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: Высокая производительность)
+// **************************
+// Benchmark: DriverSearchBenchmarks.BFS: DefaultJob [MapSize=100, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Center]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet SmirK_Student.Benchmarks-1.dll --anonymousPipes 2540 2536 --benchmarkName "SmirK_Student.Algorithms.Benchmarks.DriverSearchBenchmarks.BFS(MapSize: 100, DriverDensity: 0,01, DriverPlacement: Random, MaxDrivers: 10, SearchPosition: Center)" --job Default --benchmarkId 1 in E:\Projects\Sharp\SmirK_Student\SmirK_Student.Benchmarks\bin\Release\net6.0\SmirK_Student.Benchmarks-1\bin\Release\net6.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 6.0.36 (6.0.36, 6.0.3624.51421), X64 RyuJIT x86-64-v3
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2+BMI1+BMI2+F16C+FMA+LZCNT+MOVBE,AVX,SSE3+SSSE3+SSE4.1+SSE4.2+POPCNT,X86Base+SSE+SSE2,AES+PCLMUL VectorSize=256
+// Job: DefaultJob
+
+OverheadJitting  1: 1 op, 128200.00 ns, 128.2000 us/op
+WorkloadJitting  1: 1 op, 2213000.00 ns, 2.2130 ms/op
+
+OverheadJitting  2: 16 op, 140600.00 ns, 8.7875 us/op
+WorkloadJitting  2: 16 op, 397300.00 ns, 24.8313 us/op
+
+WorkloadPilot    1: 16 op, 247100.00 ns, 15.4438 us/op
+WorkloadPilot    2: 32 op, 530500.00 ns, 16.5781 us/op
+WorkloadPilot    3: 64 op, 1127300.00 ns, 17.6141 us/op
+WorkloadPilot    4: 128 op, 2255300.00 ns, 17.6195 us/op
+WorkloadPilot    5: 256 op, 4522000.00 ns, 17.6641 us/op
+WorkloadPilot    6: 512 op, 10469500.00 ns, 20.4482 us/op
+WorkloadPilot    7: 1024 op, 16606500.00 ns, 16.2173 us/op
+WorkloadPilot    8: 2048 op, 31903300.00 ns, 15.5778 us/op
+WorkloadPilot    9: 4096 op, 62854300.00 ns, 15.3453 us/op
+WorkloadPilot   10: 8192 op, 123014000.00 ns, 15.0164 us/op
+WorkloadPilot   11: 16384 op, 221651900.00 ns, 13.5286 us/op
+WorkloadPilot   12: 32768 op, 457734300.00 ns, 13.9689 us/op
+WorkloadPilot   13: 65536 op, 937208700.00 ns, 14.3007 us/op
+
+OverheadWarmup   1: 65536 op, 121300.00 ns, 1.8509 ns/op
+OverheadWarmup   2: 65536 op, 131500.00 ns, 2.0065 ns/op
+OverheadWarmup   3: 65536 op, 117500.00 ns, 1.7929 ns/op
+OverheadWarmup   4: 65536 op, 113300.00 ns, 1.7288 ns/op
+OverheadWarmup   5: 65536 op, 124100.00 ns, 1.8936 ns/op
+OverheadWarmup   6: 65536 op, 122700.00 ns, 1.8723 ns/op
+
+OverheadActual   1: 65536 op, 128200.00 ns, 1.9562 ns/op
+OverheadActual   2: 65536 op, 117800.00 ns, 1.7975 ns/op
+OverheadActual   3: 65536 op, 120800.00 ns, 1.8433 ns/op
+OverheadActual   4: 65536 op, 121400.00 ns, 1.8524 ns/op
+OverheadActual   5: 65536 op, 120700.00 ns, 1.8417 ns/op
+OverheadActual   6: 65536 op, 118200.00 ns, 1.8036 ns/op
+OverheadActual   7: 65536 op, 126500.00 ns, 1.9302 ns/op
+OverheadActual   8: 65536 op, 120700.00 ns, 1.8417 ns/op
+OverheadActual   9: 65536 op, 116500.00 ns, 1.7776 ns/op
+OverheadActual  10: 65536 op, 119100.00 ns, 1.8173 ns/op
+OverheadActual  11: 65536 op, 132600.00 ns, 2.0233 ns/op
+OverheadActual  12: 65536 op, 113500.00 ns, 1.7319 ns/op
+OverheadActual  13: 65536 op, 116600.00 ns, 1.7792 ns/op
+OverheadActual  14: 65536 op, 115600.00 ns, 1.7639 ns/op
+OverheadActual  15: 65536 op, 121600.00 ns, 1.8555 ns/op
+
+WorkloadWarmup   1: 65536 op, 911167400.00 ns, 13.9033 us/op
+WorkloadWarmup   2: 65536 op, 887827700.00 ns, 13.5472 us/op
+WorkloadWarmup   3: 65536 op, 894983400.00 ns, 13.6564 us/op
+WorkloadWarmup   4: 65536 op, 898512400.00 ns, 13.7102 us/op
+WorkloadWarmup   5: 65536 op, 923240200.00 ns, 14.0875 us/op
+WorkloadWarmup   6: 65536 op, 915024900.00 ns, 13.9622 us/op
+WorkloadWarmup   7: 65536 op, 905966300.00 ns, 13.8239 us/op
+WorkloadWarmup   8: 65536 op, 927823200.00 ns, 14.1575 us/op
+WorkloadWarmup   9: 65536 op, 897158700.00 ns, 13.6896 us/op
+
+// BeforeActualRun
+WorkloadActual   1: 65536 op, 912392200.00 ns, 13.9220 us/op
+WorkloadActual   2: 65536 op, 895593100.00 ns, 13.6657 us/op
+WorkloadActual   3: 65536 op, 917486500.00 ns, 13.9997 us/op
+WorkloadActual   4: 65536 op, 911334700.00 ns, 13.9059 us/op
+WorkloadActual   5: 65536 op, 900550400.00 ns, 13.7413 us/op
+WorkloadActual   6: 65536 op, 895714400.00 ns, 13.6675 us/op
+WorkloadActual   7: 65536 op, 889850300.00 ns, 13.5780 us/op
+WorkloadActual   8: 65536 op, 894025600.00 ns, 13.6417 us/op
+WorkloadActual   9: 65536 op, 893578300.00 ns, 13.6349 us/op
+WorkloadActual  10: 65536 op, 899546000.00 ns, 13.7260 us/op
+WorkloadActual  11: 65536 op, 904143600.00 ns, 13.7961 us/op
+WorkloadActual  12: 65536 op, 890285500.00 ns, 13.5847 us/op
+WorkloadActual  13: 65536 op, 893385700.00 ns, 13.6320 us/op
+WorkloadActual  14: 65536 op, 884530300.00 ns, 13.4969 us/op
+WorkloadActual  15: 65536 op, 875227100.00 ns, 13.3549 us/op
+
+// AfterActualRun
+WorkloadResult   1: 65536 op, 912271500.00 ns, 13.9202 us/op
+WorkloadResult   2: 65536 op, 895472400.00 ns, 13.6638 us/op
+WorkloadResult   3: 65536 op, 917365800.00 ns, 13.9979 us/op
+WorkloadResult   4: 65536 op, 911214000.00 ns, 13.9040 us/op
+WorkloadResult   5: 65536 op, 900429700.00 ns, 13.7395 us/op
+WorkloadResult   6: 65536 op, 895593700.00 ns, 13.6657 us/op
+WorkloadResult   7: 65536 op, 889729600.00 ns, 13.5762 us/op
+WorkloadResult   8: 65536 op, 893904900.00 ns, 13.6399 us/op
+WorkloadResult   9: 65536 op, 893457600.00 ns, 13.6331 us/op
+WorkloadResult  10: 65536 op, 899425300.00 ns, 13.7241 us/op
+WorkloadResult  11: 65536 op, 904022900.00 ns, 13.7943 us/op
+WorkloadResult  12: 65536 op, 890164800.00 ns, 13.5828 us/op
+WorkloadResult  13: 65536 op, 893265000.00 ns, 13.6301 us/op
+WorkloadResult  14: 65536 op, 884409600.00 ns, 13.4950 us/op
+WorkloadResult  15: 65536 op, 875106400.00 ns, 13.3531 us/op
+// GC:  105 4 0 992477184 65536
+// Threading:  0 0 65536
+
+// AfterAll
+// Benchmark Process 32476 has exited with code 0.
+
+Mean = 13.688 μs, StdErr = 0.043 μs (0.32%), N = 15, StdDev = 0.168 μs
+Min = 13.353 μs, Q1 = 13.606 μs, Median = 13.664 μs, Q3 = 13.767 μs, Max = 13.998 μs
+IQR = 0.160 μs, LowerFence = 13.366 μs, UpperFence = 14.007 μs
+ConfidenceInterval = [13.509 μs; 13.867 μs] (CI 99.9%), Margin = 0.179 μs (1.31% of Mean)
+Skewness = 0.08, Kurtosis = 2.41, MValue = 2
+
+// ** Remained 254 (99,2 %) benchmark(s) to run. Estimated finish 2025-12-03 23:14 (1h 48m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: Высокая производительность)
+// **************************
+// Benchmark: DriverSearchBenchmarks.DistanceSearch: DefaultJob [MapSize=100, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Center]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet SmirK_Student.Benchmarks-1.dll --anonymousPipes 2472 2488 --benchmarkName "SmirK_Student.Algorithms.Benchmarks.DriverSearchBenchmarks.DistanceSearch(MapSize: 100, DriverDensity: 0,01, DriverPlacement: Random, MaxDrivers: 10, SearchPosition: Center)" --job Default --benchmarkId 2 in E:\Projects\Sharp\SmirK_Student\SmirK_Student.Benchmarks\bin\Release\net6.0\SmirK_Student.Benchmarks-1\bin\Release\net6.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 6.0.36 (6.0.36, 6.0.3624.51421), X64 RyuJIT x86-64-v3
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2+BMI1+BMI2+F16C+FMA+LZCNT+MOVBE,AVX,SSE3+SSSE3+SSE4.1+SSE4.2+POPCNT,X86Base+SSE+SSE2,AES+PCLMUL VectorSize=256
+// Job: DefaultJob
+
+OverheadJitting  1: 1 op, 93800.00 ns, 93.8000 us/op
+WorkloadJitting  1: 1 op, 2112400.00 ns, 2.1124 ms/op
+
+OverheadJitting  2: 16 op, 178600.00 ns, 11.1625 us/op
+WorkloadJitting  2: 16 op, 186700.00 ns, 11.6688 us/op
+
+WorkloadPilot    1: 16 op, 56200.00 ns, 3.5125 us/op
+WorkloadPilot    2: 32 op, 106100.00 ns, 3.3156 us/op
+WorkloadPilot    3: 64 op, 213500.00 ns, 3.3359 us/op
+WorkloadPilot    4: 128 op, 398000.00 ns, 3.1094 us/op
+WorkloadPilot    5: 256 op, 791700.00 ns, 3.0926 us/op
+WorkloadPilot    6: 512 op, 1596200.00 ns, 3.1176 us/op
+WorkloadPilot    7: 1024 op, 3372400.00 ns, 3.2934 us/op
+WorkloadPilot    8: 2048 op, 7944100.00 ns, 3.8790 us/op
+WorkloadPilot    9: 4096 op, 13453400.00 ns, 3.2845 us/op
+WorkloadPilot   10: 8192 op, 26709500.00 ns, 3.2604 us/op
+WorkloadPilot   11: 16384 op, 51559200.00 ns, 3.1469 us/op
+WorkloadPilot   12: 32768 op, 58582400.00 ns, 1.7878 us/op
+WorkloadPilot   13: 65536 op, 117157100.00 ns, 1.7877 us/op
+WorkloadPilot   14: 131072 op, 235099900.00 ns, 1.7937 us/op
+WorkloadPilot   15: 262144 op, 461333900.00 ns, 1.7598 us/op
+WorkloadPilot   16: 524288 op, 939181600.00 ns, 1.7913 us/op
+
+OverheadWarmup   1: 524288 op, 996300.00 ns, 1.9003 ns/op
+OverheadWarmup   2: 524288 op, 935200.00 ns, 1.7838 ns/op
+OverheadWarmup   3: 524288 op, 952000.00 ns, 1.8158 ns/op
+OverheadWarmup   4: 524288 op, 939300.00 ns, 1.7916 ns/op
+OverheadWarmup   5: 524288 op, 939800.00 ns, 1.7925 ns/op
+OverheadWarmup   6: 524288 op, 958300.00 ns, 1.8278 ns/op
+OverheadWarmup   7: 524288 op, 941100.00 ns, 1.7950 ns/op
+
+OverheadActual   1: 524288 op, 969300.00 ns, 1.8488 ns/op
+OverheadActual   2: 524288 op, 1006900.00 ns, 1.9205 ns/op
+OverheadActual   3: 524288 op, 1265400.00 ns, 2.4136 ns/op
+OverheadActual   4: 524288 op, 928000.00 ns, 1.7700 ns/op
+OverheadActual   5: 524288 op, 909500.00 ns, 1.7347 ns/op
+OverheadActual   6: 524288 op, 873400.00 ns, 1.6659 ns/op
+OverheadActual   7: 524288 op, 952400.00 ns, 1.8166 ns/op
+OverheadActual   8: 524288 op, 955300.00 ns, 1.8221 ns/op
+OverheadActual   9: 524288 op, 937800.00 ns, 1.7887 ns/op
+OverheadActual  10: 524288 op, 924700.00 ns, 1.7637 ns/op
+OverheadActual  11: 524288 op, 945400.00 ns, 1.8032 ns/op
+OverheadActual  12: 524288 op, 916400.00 ns, 1.7479 ns/op
+OverheadActual  13: 524288 op, 967200.00 ns, 1.8448 ns/op
+OverheadActual  14: 524288 op, 921600.00 ns, 1.7578 ns/op
+OverheadActual  15: 524288 op, 1009500.00 ns, 1.9255 ns/op
+
+WorkloadWarmup   1: 524288 op, 982569200.00 ns, 1.8741 us/op
+WorkloadWarmup   2: 524288 op, 932170400.00 ns, 1.7780 us/op
+WorkloadWarmup   3: 524288 op, 948877900.00 ns, 1.8098 us/op
+WorkloadWarmup   4: 524288 op, 958324200.00 ns, 1.8279 us/op
+WorkloadWarmup   5: 524288 op, 921672500.00 ns, 1.7580 us/op
+WorkloadWarmup   6: 524288 op, 926603300.00 ns, 1.7674 us/op
+WorkloadWarmup   7: 524288 op, 917752000.00 ns, 1.7505 us/op
+
+// BeforeActualRun
+WorkloadActual   1: 524288 op, 936056700.00 ns, 1.7854 us/op
+WorkloadActual   2: 524288 op, 920256800.00 ns, 1.7553 us/op
+WorkloadActual   3: 524288 op, 919590400.00 ns, 1.7540 us/op
+WorkloadActual   4: 524288 op, 927817700.00 ns, 1.7697 us/op
+WorkloadActual   5: 524288 op, 927596600.00 ns, 1.7693 us/op
+WorkloadActual   6: 524288 op, 932183200.00 ns, 1.7780 us/op
+WorkloadActual   7: 524288 op, 941735300.00 ns, 1.7962 us/op
+WorkloadActual   8: 524288 op, 937502300.00 ns, 1.7881 us/op
+WorkloadActual   9: 524288 op, 914260700.00 ns, 1.7438 us/op
+WorkloadActual  10: 524288 op, 928929100.00 ns, 1.7718 us/op
+WorkloadActual  11: 524288 op, 922275400.00 ns, 1.7591 us/op
+WorkloadActual  12: 524288 op, 920634600.00 ns, 1.7560 us/op
+WorkloadActual  13: 524288 op, 934575600.00 ns, 1.7826 us/op
+WorkloadActual  14: 524288 op, 919696700.00 ns, 1.7542 us/op
+WorkloadActual  15: 524288 op, 924257700.00 ns, 1.7629 us/op
+
+// AfterActualRun
+WorkloadResult   1: 524288 op, 935111300.00 ns, 1.7836 us/op
+WorkloadResult   2: 524288 op, 919311400.00 ns, 1.7534 us/op
+WorkloadResult   3: 524288 op, 918645000.00 ns, 1.7522 us/op
+WorkloadResult   4: 524288 op, 926872300.00 ns, 1.7679 us/op
+WorkloadResult   5: 524288 op, 926651200.00 ns, 1.7674 us/op
+WorkloadResult   6: 524288 op, 931237800.00 ns, 1.7762 us/op
+WorkloadResult   7: 524288 op, 940789900.00 ns, 1.7944 us/op
+WorkloadResult   8: 524288 op, 936556900.00 ns, 1.7863 us/op
+WorkloadResult   9: 524288 op, 913315300.00 ns, 1.7420 us/op
+WorkloadResult  10: 524288 op, 927983700.00 ns, 1.7700 us/op
+WorkloadResult  11: 524288 op, 921330000.00 ns, 1.7573 us/op
+WorkloadResult  12: 524288 op, 919689200.00 ns, 1.7542 us/op
+WorkloadResult  13: 524288 op, 933630200.00 ns, 1.7808 us/op
+WorkloadResult  14: 524288 op, 918751300.00 ns, 1.7524 us/op
+WorkloadResult  15: 524288 op, 923312300.00 ns, 1.7611 us/op
+// GC:  48 0 0 457179136 524288
+// Threading:  0 0 524288
+
+// AfterAll
+// Benchmark Process 41368 has exited with code 0.
+
+Mean = 1.767 μs, StdErr = 0.004 μs (0.22%), N = 15, StdDev = 0.015 μs
+Min = 1.742 μs, Q1 = 1.754 μs, Median = 1.767 μs, Q3 = 1.778 μs, Max = 1.794 μs
+IQR = 0.025 μs, LowerFence = 1.717 μs, UpperFence = 1.815 μs
+ConfidenceInterval = [1.750 μs; 1.783 μs] (CI 99.9%), Margin = 0.016 μs (0.92% of Mean)
+Skewness = 0.23, Kurtosis = 1.76, MValue = 2
+
+// ** Remained 253 (98,8 %) benchmark(s) to run. Estimated finish 2025-12-03 23:12 (1h 46m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: Высокая производительность)
+// **************************
+// Benchmark: DriverSearchBenchmarks.SectorGrid: DefaultJob [MapSize=100, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Center]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet SmirK_Student.Benchmarks-1.dll --anonymousPipes 2620 2616 --benchmarkName "SmirK_Student.Algorithms.Benchmarks.DriverSearchBenchmarks.SectorGrid(MapSize: 100, DriverDensity: 0,01, DriverPlacement: Random, MaxDrivers: 10, SearchPosition: Center)" --job Default --benchmarkId 3 in E:\Projects\Sharp\SmirK_Student\SmirK_Student.Benchmarks\bin\Release\net6.0\SmirK_Student.Benchmarks-1\bin\Release\net6.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 6.0.36 (6.0.36, 6.0.3624.51421), X64 RyuJIT x86-64-v3
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2+BMI1+BMI2+F16C+FMA+LZCNT+MOVBE,AVX,SSE3+SSSE3+SSE4.1+SSE4.2+POPCNT,X86Base+SSE+SSE2,AES+PCLMUL VectorSize=256
+// Job: DefaultJob
+
+OverheadJitting  1: 1 op, 77100.00 ns, 77.1000 us/op
+WorkloadJitting  1: 1 op, 4776300.00 ns, 4.7763 ms/op
+
+OverheadJitting  2: 16 op, 141700.00 ns, 8.8563 us/op
+WorkloadJitting  2: 16 op, 338400.00 ns, 21.1500 us/op
+
+WorkloadPilot    1: 16 op, 213200.00 ns, 13.3250 us/op
+WorkloadPilot    2: 32 op, 380300.00 ns, 11.8844 us/op
+WorkloadPilot    3: 64 op, 846500.00 ns, 13.2266 us/op
+WorkloadPilot    4: 128 op, 1822300.00 ns, 14.2367 us/op
+WorkloadPilot    5: 256 op, 3618600.00 ns, 14.1352 us/op
+WorkloadPilot    6: 512 op, 7047200.00 ns, 13.7641 us/op
+WorkloadPilot    7: 1024 op, 13232200.00 ns, 12.9221 us/op
+WorkloadPilot    8: 2048 op, 24431200.00 ns, 11.9293 us/op
+WorkloadPilot    9: 4096 op, 48238700.00 ns, 11.7770 us/op
+WorkloadPilot   10: 8192 op, 88691300.00 ns, 10.8266 us/op
+WorkloadPilot   11: 16384 op, 171140700.00 ns, 10.4456 us/op
+WorkloadPilot   12: 32768 op, 344677900.00 ns, 10.5187 us/op
+WorkloadPilot   13: 65536 op, 692089200.00 ns, 10.5604 us/op
+
+OverheadWarmup   1: 65536 op, 121500.00 ns, 1.8539 ns/op
+OverheadWarmup   2: 65536 op, 117500.00 ns, 1.7929 ns/op
+OverheadWarmup   3: 65536 op, 116600.00 ns, 1.7792 ns/op
+OverheadWarmup   4: 65536 op, 117800.00 ns, 1.7975 ns/op
+OverheadWarmup   5: 65536 op, 124000.00 ns, 1.8921 ns/op
+OverheadWarmup   6: 65536 op, 115600.00 ns, 1.7639 ns/op
+OverheadWarmup   7: 65536 op, 126700.00 ns, 1.9333 ns/op
+OverheadWarmup   8: 65536 op, 120900.00 ns, 1.8448 ns/op
+
+OverheadActual   1: 65536 op, 126900.00 ns, 1.9363 ns/op
+OverheadActual   2: 65536 op, 129100.00 ns, 1.9699 ns/op
+OverheadActual   3: 65536 op, 119200.00 ns, 1.8188 ns/op
+OverheadActual   4: 65536 op, 116700.00 ns, 1.7807 ns/op
+OverheadActual   5: 65536 op, 126100.00 ns, 1.9241 ns/op
+OverheadActual   6: 65536 op, 117500.00 ns, 1.7929 ns/op
+OverheadActual   7: 65536 op, 116600.00 ns, 1.7792 ns/op
+OverheadActual   8: 65536 op, 127100.00 ns, 1.9394 ns/op
+OverheadActual   9: 65536 op, 125500.00 ns, 1.9150 ns/op
+OverheadActual  10: 65536 op, 120900.00 ns, 1.8448 ns/op
+OverheadActual  11: 65536 op, 118500.00 ns, 1.8082 ns/op
+OverheadActual  12: 65536 op, 119600.00 ns, 1.8250 ns/op
+OverheadActual  13: 65536 op, 125700.00 ns, 1.9180 ns/op
+OverheadActual  14: 65536 op, 117500.00 ns, 1.7929 ns/op
+OverheadActual  15: 65536 op, 115500.00 ns, 1.7624 ns/op
+
+WorkloadWarmup   1: 65536 op, 705361500.00 ns, 10.7630 us/op
+WorkloadWarmup   2: 65536 op, 705781000.00 ns, 10.7694 us/op
+WorkloadWarmup   3: 65536 op, 698811100.00 ns, 10.6630 us/op
+WorkloadWarmup   4: 65536 op, 696381900.00 ns, 10.6259 us/op
+WorkloadWarmup   5: 65536 op, 702704700.00 ns, 10.7224 us/op
+WorkloadWarmup   6: 65536 op, 702925600.00 ns, 10.7258 us/op
+WorkloadWarmup   7: 65536 op, 701575700.00 ns, 10.7052 us/op
+
+// BeforeActualRun
+WorkloadActual   1: 65536 op, 704563300.00 ns, 10.7508 us/op
+WorkloadActual   2: 65536 op, 710404100.00 ns, 10.8399 us/op
+WorkloadActual   3: 65536 op, 698757000.00 ns, 10.6622 us/op
+WorkloadActual   4: 65536 op, 719698100.00 ns, 10.9817 us/op
+WorkloadActual   5: 65536 op, 735590700.00 ns, 11.2242 us/op
+WorkloadActual   6: 65536 op, 731324300.00 ns, 11.1591 us/op
+WorkloadActual   7: 65536 op, 734079500.00 ns, 11.2012 us/op
+WorkloadActual   8: 65536 op, 721254100.00 ns, 11.0055 us/op
+WorkloadActual   9: 65536 op, 715584000.00 ns, 10.9189 us/op
+WorkloadActual  10: 65536 op, 693132100.00 ns, 10.5764 us/op
+WorkloadActual  11: 65536 op, 691374200.00 ns, 10.5495 us/op
+WorkloadActual  12: 65536 op, 687789400.00 ns, 10.4948 us/op
+WorkloadActual  13: 65536 op, 697797000.00 ns, 10.6475 us/op
+WorkloadActual  14: 65536 op, 690097000.00 ns, 10.5300 us/op
+WorkloadActual  15: 65536 op, 698835400.00 ns, 10.6634 us/op
+WorkloadActual  16: 65536 op, 734195400.00 ns, 11.2029 us/op
+WorkloadActual  17: 65536 op, 713359900.00 ns, 10.8850 us/op
+WorkloadActual  18: 65536 op, 717647800.00 ns, 10.9504 us/op
+WorkloadActual  19: 65536 op, 705378800.00 ns, 10.7632 us/op
+WorkloadActual  20: 65536 op, 679635100.00 ns, 10.3704 us/op
+WorkloadActual  21: 65536 op, 683553200.00 ns, 10.4302 us/op
+WorkloadActual  22: 65536 op, 679237700.00 ns, 10.3643 us/op
+WorkloadActual  23: 65536 op, 681330800.00 ns, 10.3963 us/op
+WorkloadActual  24: 65536 op, 693117200.00 ns, 10.5761 us/op
+
+// AfterActualRun
+WorkloadResult   1: 65536 op, 704443700.00 ns, 10.7490 us/op
+WorkloadResult   2: 65536 op, 710284500.00 ns, 10.8381 us/op
+WorkloadResult   3: 65536 op, 698637400.00 ns, 10.6604 us/op
+WorkloadResult   4: 65536 op, 719578500.00 ns, 10.9799 us/op
+WorkloadResult   5: 65536 op, 735471100.00 ns, 11.2224 us/op
+WorkloadResult   6: 65536 op, 731204700.00 ns, 11.1573 us/op
+WorkloadResult   7: 65536 op, 733959900.00 ns, 11.1993 us/op
+WorkloadResult   8: 65536 op, 721134500.00 ns, 11.0036 us/op
+WorkloadResult   9: 65536 op, 715464400.00 ns, 10.9171 us/op
+WorkloadResult  10: 65536 op, 693012500.00 ns, 10.5745 us/op
+WorkloadResult  11: 65536 op, 691254600.00 ns, 10.5477 us/op
+WorkloadResult  12: 65536 op, 687669800.00 ns, 10.4930 us/op
+WorkloadResult  13: 65536 op, 697677400.00 ns, 10.6457 us/op
+WorkloadResult  14: 65536 op, 689977400.00 ns, 10.5282 us/op
+WorkloadResult  15: 65536 op, 698715800.00 ns, 10.6616 us/op
+WorkloadResult  16: 65536 op, 734075800.00 ns, 11.2011 us/op
+WorkloadResult  17: 65536 op, 713240300.00 ns, 10.8832 us/op
+WorkloadResult  18: 65536 op, 717528200.00 ns, 10.9486 us/op
+WorkloadResult  19: 65536 op, 705259200.00 ns, 10.7614 us/op
+WorkloadResult  20: 65536 op, 679515500.00 ns, 10.3686 us/op
+WorkloadResult  21: 65536 op, 683433600.00 ns, 10.4284 us/op
+WorkloadResult  22: 65536 op, 679118100.00 ns, 10.3625 us/op
+WorkloadResult  23: 65536 op, 681211200.00 ns, 10.3945 us/op
+WorkloadResult  24: 65536 op, 692997600.00 ns, 10.5743 us/op
+// GC:  82 0 0 771751936 65536
+// Threading:  0 0 65536
+
+// AfterAll
+// Benchmark Process 28232 has exited with code 0.
+
+Mean = 10.754 μs, StdErr = 0.057 μs (0.53%), N = 24, StdDev = 0.278 μs
+Min = 10.363 μs, Q1 = 10.543 μs, Median = 10.705 μs, Q3 = 10.956 μs, Max = 11.222 μs
+IQR = 0.414 μs, LowerFence = 9.922 μs, UpperFence = 11.577 μs
+ConfidenceInterval = [10.541 μs; 10.968 μs] (CI 99.9%), Margin = 0.214 μs (1.99% of Mean)
+Skewness = 0.26, Kurtosis = 1.73, MValue = 2
+
+// ** Remained 252 (98,4 %) benchmark(s) to run. Estimated finish 2025-12-03 23:11 (1h 45m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: Высокая производительность)
+// **************************
+// Benchmark: DriverSearchBenchmarks.BruteForce: DefaultJob [MapSize=100, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Corner]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet SmirK_Student.Benchmarks-1.dll --anonymousPipes 2180 2644 --benchmarkName "SmirK_Student.Algorithms.Benchmarks.DriverSearchBenchmarks.BruteForce(MapSize: 100, DriverDensity: 0,01, DriverPlacement: Random, MaxDrivers: 10, SearchPosition: Corner)" --job Default --benchmarkId 4 in E:\Projects\Sharp\SmirK_Student\SmirK_Student.Benchmarks\bin\Release\net6.0\SmirK_Student.Benchmarks-1\bin\Release\net6.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 6.0.36 (6.0.36, 6.0.3624.51421), X64 RyuJIT x86-64-v3
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2+BMI1+BMI2+F16C+FMA+LZCNT+MOVBE,AVX,SSE3+SSSE3+SSE4.1+SSE4.2+POPCNT,X86Base+SSE+SSE2,AES+PCLMUL VectorSize=256
+// Job: DefaultJob
+
+OverheadJitting  1: 1 op, 79300.00 ns, 79.3000 us/op
+WorkloadJitting  1: 1 op, 3032300.00 ns, 3.0323 ms/op
+
+OverheadJitting  2: 16 op, 138500.00 ns, 8.6563 us/op
+WorkloadJitting  2: 16 op, 208000.00 ns, 13.0000 us/op
+
+WorkloadPilot    1: 16 op, 110600.00 ns, 6.9125 us/op
+WorkloadPilot    2: 32 op, 146100.00 ns, 4.5656 us/op
+WorkloadPilot    3: 64 op, 271500.00 ns, 4.2422 us/op
+WorkloadPilot    4: 128 op, 532400.00 ns, 4.1594 us/op
+WorkloadPilot    5: 256 op, 1066600.00 ns, 4.1664 us/op
+WorkloadPilot    6: 512 op, 2267000.00 ns, 4.4277 us/op
+WorkloadPilot    7: 1024 op, 4464900.00 ns, 4.3603 us/op
+WorkloadPilot    8: 2048 op, 8978300.00 ns, 4.3839 us/op
+WorkloadPilot    9: 4096 op, 17774100.00 ns, 4.3394 us/op
+WorkloadPilot   10: 8192 op, 36788300.00 ns, 4.4908 us/op
+WorkloadPilot   11: 16384 op, 67410900.00 ns, 4.1144 us/op
+WorkloadPilot   12: 32768 op, 125670200.00 ns, 3.8352 us/op
+WorkloadPilot   13: 65536 op, 251540100.00 ns, 3.8382 us/op
+WorkloadPilot   14: 131072 op, 509174300.00 ns, 3.8847 us/op
+
+OverheadWarmup   1: 131072 op, 234500.00 ns, 1.7891 ns/op
+OverheadWarmup   2: 131072 op, 237300.00 ns, 1.8105 ns/op
+OverheadWarmup   3: 131072 op, 237400.00 ns, 1.8112 ns/op
+OverheadWarmup   4: 131072 op, 237300.00 ns, 1.8105 ns/op
+OverheadWarmup   5: 131072 op, 262600.00 ns, 2.0035 ns/op
+OverheadWarmup   6: 131072 op, 231800.00 ns, 1.7685 ns/op
+
+OverheadActual   1: 131072 op, 235300.00 ns, 1.7952 ns/op
+OverheadActual   2: 131072 op, 242900.00 ns, 1.8532 ns/op
+OverheadActual   3: 131072 op, 237200.00 ns, 1.8097 ns/op
+OverheadActual   4: 131072 op, 233700.00 ns, 1.7830 ns/op
+OverheadActual   5: 131072 op, 486200.00 ns, 3.7094 ns/op
+OverheadActual   6: 131072 op, 239700.00 ns, 1.8288 ns/op
+OverheadActual   7: 131072 op, 236800.00 ns, 1.8066 ns/op
+OverheadActual   8: 131072 op, 236900.00 ns, 1.8074 ns/op
+OverheadActual   9: 131072 op, 236800.00 ns, 1.8066 ns/op
+OverheadActual  10: 131072 op, 244100.00 ns, 1.8623 ns/op
+OverheadActual  11: 131072 op, 234200.00 ns, 1.7868 ns/op
+OverheadActual  12: 131072 op, 241900.00 ns, 1.8456 ns/op
+OverheadActual  13: 131072 op, 250500.00 ns, 1.9112 ns/op
+OverheadActual  14: 131072 op, 233700.00 ns, 1.7830 ns/op
+OverheadActual  15: 131072 op, 238200.00 ns, 1.8173 ns/op
+
+WorkloadWarmup   1: 131072 op, 503387300.00 ns, 3.8405 us/op
+WorkloadWarmup   2: 131072 op, 508353800.00 ns, 3.8784 us/op
+WorkloadWarmup   3: 131072 op, 520846100.00 ns, 3.9737 us/op
+WorkloadWarmup   4: 131072 op, 509296300.00 ns, 3.8856 us/op
+WorkloadWarmup   5: 131072 op, 527888100.00 ns, 4.0275 us/op
+WorkloadWarmup   6: 131072 op, 506198000.00 ns, 3.8620 us/op
+
+// BeforeActualRun
+WorkloadActual   1: 131072 op, 504803100.00 ns, 3.8513 us/op
+WorkloadActual   2: 131072 op, 504636100.00 ns, 3.8501 us/op
+WorkloadActual   3: 131072 op, 502638900.00 ns, 3.8348 us/op
+WorkloadActual   4: 131072 op, 504523900.00 ns, 3.8492 us/op
+WorkloadActual   5: 131072 op, 503952600.00 ns, 3.8449 us/op
+WorkloadActual   6: 131072 op, 504966100.00 ns, 3.8526 us/op
+WorkloadActual   7: 131072 op, 505541600.00 ns, 3.8570 us/op
+WorkloadActual   8: 131072 op, 504918000.00 ns, 3.8522 us/op
+WorkloadActual   9: 131072 op, 505300100.00 ns, 3.8551 us/op
+WorkloadActual  10: 131072 op, 503808100.00 ns, 3.8438 us/op
+WorkloadActual  11: 131072 op, 503791000.00 ns, 3.8436 us/op
+WorkloadActual  12: 131072 op, 519874100.00 ns, 3.9663 us/op
+WorkloadActual  13: 131072 op, 503971300.00 ns, 3.8450 us/op
+WorkloadActual  14: 131072 op, 531285600.00 ns, 4.0534 us/op
+WorkloadActual  15: 131072 op, 505405400.00 ns, 3.8559 us/op
+
+// AfterActualRun
+WorkloadResult   1: 131072 op, 504565900.00 ns, 3.8495 us/op
+WorkloadResult   2: 131072 op, 504398900.00 ns, 3.8483 us/op
+WorkloadResult   3: 131072 op, 502401700.00 ns, 3.8330 us/op
+WorkloadResult   4: 131072 op, 504286700.00 ns, 3.8474 us/op
+WorkloadResult   5: 131072 op, 503715400.00 ns, 3.8430 us/op
+WorkloadResult   6: 131072 op, 504728900.00 ns, 3.8508 us/op
+WorkloadResult   7: 131072 op, 505304400.00 ns, 3.8552 us/op
+WorkloadResult   8: 131072 op, 504680800.00 ns, 3.8504 us/op
+WorkloadResult   9: 131072 op, 505062900.00 ns, 3.8533 us/op
+WorkloadResult  10: 131072 op, 503570900.00 ns, 3.8419 us/op
+WorkloadResult  11: 131072 op, 503553800.00 ns, 3.8418 us/op
+WorkloadResult  12: 131072 op, 503734100.00 ns, 3.8432 us/op
+WorkloadResult  13: 131072 op, 505168200.00 ns, 3.8541 us/op
+// GC:  14 0 0 137363456 131072
+// Threading:  0 0 131072
+
+// AfterAll
+// Benchmark Process 36012 has exited with code 0.
+
+Mean = 3.847 μs, StdErr = 0.002 μs (0.05%), N = 13, StdDev = 0.006 μs
+Min = 3.833 μs, Q1 = 3.843 μs, Median = 3.848 μs, Q3 = 3.851 μs, Max = 3.855 μs
+IQR = 0.008 μs, LowerFence = 3.831 μs, UpperFence = 3.862 μs
+ConfidenceInterval = [3.840 μs; 3.855 μs] (CI 99.9%), Margin = 0.007 μs (0.19% of Mean)
+Skewness = -0.61, Kurtosis = 2.49, MValue = 2
+
+// ** Remained 251 (98,0 %) benchmark(s) to run. Estimated finish 2025-12-03 23:01 (1h 34m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: Высокая производительность)
+// **************************
+// Benchmark: DriverSearchBenchmarks.BFS: DefaultJob [MapSize=100, DriverDensity=0,01, DriverPlacement=Random, MaxDrivers=10, SearchPosition=Corner]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet SmirK_Student.Benchmarks-1.dll --anonymousPipes 2232 2236 --benchmarkName "SmirK_Student.Algorithms.Benchmarks.DriverSearchBenchmarks.BFS(MapSize: 100, DriverDensity: 0,01, DriverPlacement: Random, MaxDrivers: 10, SearchPosition: Corner)" --job Default --benchmarkId 5 in E:\Projects\Sharp\SmirK_Student\SmirK_Student.Benchmarks\bin\Release\net6.0\SmirK_Student.Benchmarks-1\bin\Release\net6.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 6.0.36 (6.0.36, 6.0.3624.51421), X64 RyuJIT x86-64-v3
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2+BMI1+BMI2+F16C+FMA+LZCNT+MOVBE,AVX,SSE3+SSSE3+SSE4.1+SSE4.2+POPCNT,X86Base+SSE+SSE2,AES+PCLMUL VectorSize=256
+// Job: DefaultJob
+
+OverheadJitting  1: 1 op, 76500.00 ns, 76.5000 us/op
+WorkloadJitting  1: 1 op, 2073200.00 ns, 2.0732 ms/op
+
+OverheadJitting  2: 16 op, 146400.00 ns, 9.1500 us/op
+WorkloadJitting  2: 16 op, 277500.00 ns, 17.3438 us/op
+
+WorkloadPilot    1: 16 op, 128100.00 ns, 8.0063 us/op
+WorkloadPilot    2: 32 op, 246600.00 ns, 7.7063 us/op
+WorkloadPilot    3: 64 op, 594900.00 ns, 9.2953 us/op
+WorkloadPilot    4: 128 op, 1186500.00 ns, 9.2695 us/op
+WorkloadPilot    5: 256 op, 2559300.00 ns, 9.9973 us/op
+WorkloadPilot    6: 512 op, 4924100.00 ns, 9.6174 us/op
+WorkloadPilot    7: 1024 op, 10138100.00 ns, 9.9005 us/op
+WorkloadPilot    8: 2048 op, 15642000.00 ns, 7.6377 us/op
+WorkloadPilot    9: 4096 op, 30889800.00 ns, 7.5415 us/op
+WorkloadPilot   10: 8192 op, 63346400.00 ns, 7.7327 us/op
+WorkloadPilot   11: 16384 op, 112341000.00 ns, 6.8568 us/op
+WorkloadPilot   12: 32768 op, 225892300.00 ns, 6.8937 us/op
+WorkloadPilot   13: 65536 op, 441394700.00 ns, 6.7351 us/op
+WorkloadPilot   14: 131072 op, 902759400.00 ns, 6.8875 us/op
+
+OverheadWarmup   1: 131072 op, 236300.00 ns, 1.8028 ns/op
+OverheadWarmup   2: 131072 op, 247100.00 ns, 1.8852 ns/op
+OverheadWarmup   3: 131072 op, 248000.00 ns, 1.8921 ns/op
+OverheadWarmup   4: 131072 op, 263700.00 ns, 2.0119 ns/op
+OverheadWarmup   5: 131072 op, 252000.00 ns, 1.9226 ns/op
+OverheadWarmup   6: 131072 op, 253700.00 ns, 1.9356 ns/op
+OverheadWarmup   7: 131072 op, 236800.00 ns, 1.8066 ns/op
+
+OverheadActual   1: 131072 op, 240000.00 ns, 1.8311 ns/op
+OverheadActual   2: 131072 op, 252400.00 ns, 1.9257 ns/op
+OverheadActual   3: 131072 op, 239500.00 ns, 1.8272 ns/op
+OverheadActual   4: 131072 op, 241700.00 ns, 1.8440 ns/op
+OverheadActual   5: 131072 op, 240900.00 ns, 1.8379 ns/op
+OverheadActual   6: 131072 op, 251700.00 ns, 1.9203 ns/op
+OverheadActual   7: 131072 op, 234500.00 ns, 1.7891 ns/op
+OverheadActual   8: 131072 op, 276500.00 ns, 2.1095 ns/op
+OverheadActual   9: 131072 op, 220600.00 ns, 1.6830 ns/op
+OverheadActual  10: 131072 op, 244200.00 ns, 1.8631 ns/op
+OverheadActual  11: 131072 op, 236900.00 ns, 1.8074 ns/op
+OverheadActual  12: 131072 op, 234600.00 ns, 1.7899 ns/op
+OverheadActual  13: 131072 op, 251700.00 ns, 1.9203 ns/op
+OverheadActual  14: 131072 op, 230400.00 ns, 1.7578 ns/op
+OverheadActual  15: 131072 op, 236700.00 ns, 1.8059 ns/op
+
+WorkloadWarmup   1: 131072 op, 922664900.00 ns, 7.0394 us/op
+WorkloadWarmup   2: 131072 op, 873988200.00 ns, 6.6680 us/op
+WorkloadWarmup   3: 131072 op, 931467200.00 ns, 7.1065 us/op
+WorkloadWarmup   4: 131072 op, 914502400.00 ns, 6.9771 us/op
+WorkloadWarmup   5: 131072 op, 882586600.00 ns, 6.7336 us/op
+Successfully reverted power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: Высокая производительность)
