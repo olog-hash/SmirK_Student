@@ -73,7 +73,6 @@ IDE: JetBrains Rider 2025.2
 - **SectorGridAlgorithm (Послойный поиск по секторам)** - выполняет обход секторов квадратными слоями от точки заказа. Проверяет всех водителей текущего слоя. Ключевая оптимизация: досрочное прерывание поиска. Если минимально возможное расстояние до следующего слоя больше, чем расстояние до самого дальнего из уже найденных водителей, поиск останавливается - в следующих слоях гарантированно не будет более близких водителей. Оптимален для больших карт с неравномерным распределением водителей и при использовании подходящего размера сектора.
 
 ## Результаты бенчмарков
-[Скриншот вычислений которые еще грузятся...]
 
 План бенчмарков проводился по следующим параметрам, для всех алгоритмов:
 - Размер карты: 100х100, 500х500, 1000х1000
@@ -85,6 +84,144 @@ IDE: JetBrains Rider 2025.2
 Seed для генерации случайных позиций = 17
 
 Размер ячеек (cellgrid) для SpartialGrid вычислялся по формуле `Math.Max(1, (int)(Math.Sqrt(MapSize) / 4));`
+
+**Таблицf с результатами была оформлена в удобном порядке по параметрам:**
+<details>
+  
+### Карта 100x100
+
+|Алгоритм|Плотность|Размещение|MaxDrivers|Позиция|Время (ns)|Память (B)|
+|---|---|---|---|---|---|---|
+|**BruteForce**|0.01|Random|10|Center|4,007|1,048|
+|BruteForce|0.01|Random|10|Corner|3,960|1,048|
+|BruteForce|0.01|Random|100|Center|5,465|7,936|
+|BruteForce|0.01|WorstCase|10|Center|3,597|1,048|
+|BruteForce|0.01|WorstCase|100|Corner|5,169|7,936|
+|BruteForce|0.10|Random|10|Center|40,406|1,048|
+|BruteForce|0.10|Random|100|Center|88,553|7,936|
+|BruteForce|0.10|WorstCase|10|Center|32,651|1,048|
+|BruteForce|0.10|WorstCase|100|Corner|71,614|7,936|
+|**BFS**|0.01|Random|10|Center|18,898|15,144|
+|BFS|0.01|Random|10|Corner|22,314|13,072|
+|BFS|0.01|Random|100|Center|147,252|25,800|
+|BFS|0.01|WorstCase|10|Center|142,805|19,264|
+|BFS|0.01|WorstCase|100|Corner|146,620|21,680|
+|BFS|0.10|Random|10|Center|3,192|13,072|
+|BFS|0.10|Random|100|Center|19,359|21,680|
+|BFS|0.10|WorstCase|10|Center|52,583|19,264|
+|BFS|0.10|WorstCase|100|Corner|130,973|21,680|
+|**DistanceSearch**|0.01|Random|10|Center|2,616|872|
+|DistanceSearch|0.01|Random|10|Corner|3,857|872|
+|DistanceSearch|0.01|Random|100|Center|21,273|7,408|
+|DistanceSearch|0.01|WorstCase|10|Center|18,979|872|
+|DistanceSearch|0.01|WorstCase|100|Corner|24,334|7,408|
+|DistanceSearch|0.10|Random|10|Center|540|1,032|
+|DistanceSearch|0.10|Random|100|Center|3,065|7,408|
+|DistanceSearch|0.10|WorstCase|10|Center|7,252|872|
+|DistanceSearch|0.10|WorstCase|100|Corner|21,720|7,824|
+|**SectorGrid**|0.01|Random|10|Center|14,949|16,160|
+|SectorGrid|0.01|Random|10|Corner|30,257|71,832|
+|SectorGrid|0.01|Random|100|Center|67,555|70,192|
+|SectorGrid|0.01|WorstCase|10|Center|70,331|63,304|
+|SectorGrid|0.01|WorstCase|100|Corner|105,747|242,568|
+|SectorGrid|0.10|Random|10|Center|4,838|3,960|
+|SectorGrid|0.10|Random|100|Center|28,614|23,048|
+|SectorGrid|0.10|WorstCase|10|Center|63,273|46,248|
+|SectorGrid|0.10|WorstCase|100|Corner|151,478|242,568|
+
+### Карта 500x500
+
+|Алгоритм|Плотность|Размещение|MaxDrivers|Позиция|Время (ns)|Память (B)|
+|---|---|---|---|---|---|---|
+|**BruteForce**|0.01|Random|10|Center|110,096|1,048|
+|BruteForce|0.01|Random|10|Corner|90,979|1,048|
+|BruteForce|0.01|Random|100|Center|202,662|7,936|
+|BruteForce|0.01|WorstCase|10|Center|79,778|1,048|
+|BruteForce|0.01|WorstCase|100|Corner|179,091|7,936|
+|BruteForce|0.10|Random|10|Center|1,108,865|1,048|
+|BruteForce|0.10|Random|100|Center|1,885,718|7,936|
+|BruteForce|0.10|WorstCase|10|Center|791,397|1,048|
+|BruteForce|0.10|WorstCase|100|Corner|1,573,458|7,936|
+|**BFS**|0.01|Random|10|Center|33,362|255,230|
+|BFS|0.01|Random|10|Corner|40,126|253,189|
+|BFS|0.01|Random|100|Center|201,307|274,212|
+|BFS|0.01|WorstCase|10|Center|3,426,454|284,410|
+|BFS|0.01|WorstCase|100|Corner|3,804,142|274,514|
+|BFS|0.10|Random|10|Center|26,990|253,074|
+|BFS|0.10|Random|100|Center|49,727|261,684|
+|BFS|0.10|WorstCase|10|Center|1,088,048|284,185|
+|BFS|0.10|WorstCase|100|Corner|3,094,556|274,342|
+|**DistanceSearch**|0.01|Random|10|Center|2,095|872|
+|DistanceSearch|0.01|Random|10|Corner|3,712|872|
+|DistanceSearch|0.01|Random|100|Center|25,249|7,408|
+|DistanceSearch|0.01|WorstCase|10|Center|474,146|872|
+|DistanceSearch|0.01|WorstCase|100|Corner|599,942|7,568|
+|DistanceSearch|0.10|Random|10|Center|502|1,032|
+|DistanceSearch|0.10|Random|100|Center|2,996|7,408|
+|DistanceSearch|0.10|WorstCase|10|Center|130,638|872|
+|DistanceSearch|0.10|WorstCase|100|Corner|503,277|7,600|
+|**SectorGrid**|0.01|Random|10|Center|3,932|3,960|
+|SectorGrid|0.01|Random|10|Corner|7,373|13,968|
+|SectorGrid|0.01|Random|100|Center|43,895|31,816|
+|SectorGrid|0.01|WorstCase|10|Center|332,347|244,064|
+|SectorGrid|0.01|WorstCase|100|Corner|532,250|949,328|
+|SectorGrid|0.10|Random|10|Center|3,189|1,600|
+|SectorGrid|0.10|Random|100|Center|20,778|10,848|
+|SectorGrid|0.10|WorstCase|10|Center|460,236|143,456|
+|SectorGrid|0.10|WorstCase|100|Corner|1,882,291|949,328|
+
+### Карта 1000x1000
+
+|Алгоритм|Плотность|Размещение|MaxDrivers|Позиция|Время (ns)|Память (B)|
+|---|---|---|---|---|---|---|
+|**BruteForce**|0.01|Random|10|Center|444,628|1,048|
+|BruteForce|0.01|Random|10|Corner|358,988|1,048|
+|BruteForce|0.01|Random|100|Center|771,784|7,936|
+|BruteForce|0.01|WorstCase|10|Center|313,977|1,048|
+|BruteForce|0.01|WorstCase|100|Corner|656,456|7,936|
+|BruteForce|0.10|Random|10|Center|4,791,151|1,048|
+|BruteForce|0.10|Random|100|Center|7,314,061|7,936|
+|BruteForce|0.10|WorstCase|10|Center|3,293,485|1,048|
+|BruteForce|0.10|WorstCase|100|Corner|5,701,761|7,936|
+|**BFS**|0.01|Random|10|Center|77,020|1,005,172|
+|BFS|0.01|Random|10|Corner|83,532|1,003,121|
+|BFS|0.01|Random|100|Center|274,577|1,024,068|
+|BFS|0.01|WorstCase|10|Center|18,432,111|1,066,680|
+|BFS|0.01|WorstCase|100|Corner|22,462,497|1,040,424|
+|BFS|0.10|Random|10|Center|140,050|1,002,052|
+|BFS|0.10|Random|100|Center|156,215|1,011,693|
+|BFS|0.10|WorstCase|10|Center|5,137,099|1,066,796|
+|BFS|0.10|WorstCase|100|Corner|18,787,403|1,040,424|
+|**DistanceSearch**|0.01|Random|10|Center|1,187|872|
+|DistanceSearch|0.01|Random|10|Corner|2,651|872|
+|DistanceSearch|0.01|Random|100|Center|22,456|7,408|
+|DistanceSearch|0.01|WorstCase|10|Center|3,006,623|872|
+|DistanceSearch|0.01|WorstCase|100|Corner|5,436,030|7,568|
+|DistanceSearch|0.10|Random|10|Center|414|936|
+|DistanceSearch|0.10|Random|100|Center|3,021|7,600|
+|DistanceSearch|0.10|WorstCase|10|Center|590,481|872|
+|DistanceSearch|0.10|WorstCase|100|Corner|6,417,387|7,600|
+|**SectorGrid**|0.01|Random|10|Center|1,486|1,600|
+|SectorGrid|0.01|Random|10|Corner|2,941|5,104|
+|SectorGrid|0.01|Random|100|Center|25,527|18,664|
+|SectorGrid|0.01|WorstCase|10|Center|836,066|477,640|
+|SectorGrid|0.01|WorstCase|100|Corner|1,420,428|1,892,840|
+|SectorGrid|0.10|Random|10|Center|1,661|1,272|
+|SectorGrid|0.10|Random|100|Center|14,488|9,096|
+|SectorGrid|0.10|WorstCase|10|Center|1,555,188|269,216|
+|SectorGrid|0.10|WorstCase|100|Corner|7,523,910|1,892,840|
+
+</details>
+
+**Или же в виде скриншотов из самой программы**
+
+<details>
+  ![bandicam 2025-12-04 07-12-39-595](https://github.com/user-attachments/assets/ae98cd4e-bffe-43fd-9ace-909ba49d8724)
+  ![bandicam 2025-12-04 07-12-46-029](https://github.com/user-attachments/assets/6d8113d0-4faa-4d91-af2d-bc23e8b4af18)
+  ![bandicam 2025-12-04 07-12-59-273](https://github.com/user-attachments/assets/0929aea1-915d-4ef8-afcb-84ca72211265)
+  ![bandicam 2025-12-04 07-13-19-670](https://github.com/user-attachments/assets/d6658836-b930-4249-906d-0b02cf131273)
+  ![bandicam 2025-12-04 07-13-27-322](https://github.com/user-attachments/assets/77245d97-6d3f-41f7-bbfb-3ec5d0e57950)
+</details>
 
 ## Покрытие тестами
 
