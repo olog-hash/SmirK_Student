@@ -1,5 +1,5 @@
-﻿using SmirK_Student.Map.Containers;
-using SmirK_Student.Map.Core;
+﻿using SmirK_Student.Domain.Drivers.Map.Containers;
+using SmirK_Student.Domain.Drivers.Map.Containers.Core;
 
 namespace MyTests.NUnitTests.ContainerTests
 {

@@ -1,6 +1,6 @@
 ﻿using BenchmarkDotNet.Attributes;
-using SmirK_Student.Map.Containers;
-using SmirK_Student.Map.Core.Data;
+using SmirK_Student.Domain.Drivers.Algorithms;
+using SmirK_Student.Domain.Drivers.Map.Containers;
 
 namespace SmirK_Student.Algorithms.Benchmarks
 {
@@ -22,7 +22,7 @@ namespace SmirK_Student.Algorithms.Benchmarks
     [MarkdownExporterAttribute.GitHub]
     public class DriverSearchBenchmarks
     {
-        [Params(100, 1000, 5000)] public int MapSize { get; set; }
+        [Params(100, 500, 1000)] public int MapSize { get; set; }
 
         [Params(0.01, 0.10)] public double DriverDensity { get; set; }
 
