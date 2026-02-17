@@ -1,5 +1,5 @@
-﻿using SmirK_Student.Algorithms.Core;
-using SmirK_Student.Map.Core;
+﻿using SmirK_Student.Domain.Drivers.Algorithms.Core;
+using SmirK_Student.Domain.Drivers.Map.Containers.Core;
 
 namespace MyTests.NUnitTests.MathAlgorithmTest.Core
 {

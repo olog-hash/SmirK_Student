@@ -1,6 +1,6 @@
-﻿using SmirK_Student.Algorithms;
-using SmirK_Student.Algorithms.Core;
-using SmirK_Student.Map.Containers;
+﻿using SmirK_Student.Domain.Drivers.Algorithms;
+using SmirK_Student.Domain.Drivers.Algorithms.Core;
+using SmirK_Student.Domain.Drivers.Map.Containers;
 
 namespace MyTests.NUnitTests.AlgorithmTests
 {
